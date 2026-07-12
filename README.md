@@ -8,7 +8,7 @@ A modern, responsive **Full Stack Developer Portfolio** built for seamless deplo
 
 ## 🌐 Live Demo
 
-🔗 **Portfolio:** https://your-portfolio.vercel.app
+🔗 **Portfolio:** https://ronak-portfolio-omega.vercel.app/
 
 > Replace the above link with your deployed Vercel URL.
 
