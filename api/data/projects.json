@@ -1,0 +1,182 @@
+[
+  {
+    "id": "legal-qa-agent",
+    "name": "Legal / Policy Q&A Agent",
+    "date": "Jun 2026",
+    "category": "ai",
+    "desc": "Full-stack, multi-tier AI agent for legal and policy Q&A with RAG for context-grounded answers, persistent conversation memory, and pluggable multi-LLM routing.",
+    "tags": ["React", "Node.js", "FastAPI", "RAG"],
+    "live": null,
+    "code": "https://github.com/Ronak-star/legal-qa-agent"
+  },
+  {
+    "id": "study-buddy-agent",
+    "name": "Study Buddy Agent",
+    "date": "Jun 2026",
+    "category": "ai",
+    "desc": "AI-powered study assistant using LangGraph, FastAPI, and React — a tool-using LLM agent with persistent memory for Q&A, summaries, flashcards, and quick calculations.",
+    "tags": ["LangGraph", "FastAPI", "React"],
+    "live": null,
+    "code": "https://github.com/Ronak-star/study-buddy-agent"
+  },
+  {
+    "id": "code-reviewer",
+    "name": "code-reviewer",
+    "date": "Jun 2026",
+    "category": "ai",
+    "desc": "AI-powered code reviewer that leverages LLMs to analyze code quality, detect bugs, and suggest improvements — real-time feedback on structure, readability, and best practices.",
+    "tags": ["Python", "LLM APIs"],
+    "live": null,
+    "code": "https://github.com/Ronak-star/code-reviewer"
+  },
+  {
+    "id": "scheduler",
+    "name": "Scheduler — Social Media Automation",
+    "date": "May–Jun 2026",
+    "category": "fullstack",
+    "desc": "Full-stack SaaS for AI-powered social media management: multi-platform scheduling, AI captions, engagement assistance, analytics, and JWT auth in a scalable architecture.",
+    "tags": ["SaaS", "AI", "JWT"],
+    "live": "https://social-scheduler-wpbb.vercel.app/",
+    "code": null
+  },
+  {
+    "id": "shifraai",
+    "name": "ShifraAI",
+    "date": "Mar–May 2026",
+    "category": "ai",
+    "desc": "AI-powered customer support SaaS on the MERN stack that automates query resolution and streamlines support workflows for fast, scalable responses.",
+    "tags": ["MERN", "AI"],
+    "live": null,
+    "code": "https://github.com/Ronak-star/5.ShifraAI"
+  },
+  {
+    "id": "ecommerce-mern",
+    "name": "Full Stack E-Commerce Website",
+    "date": "May 2026",
+    "category": "fullstack",
+    "desc": "Complete MERN e-commerce platform with authentication, product management, shopping cart, and an admin dashboard, deployed with MongoDB Atlas and JWT.",
+    "tags": ["React", "Node.js", "MongoDB"],
+    "live": "https://frontend-topaz-zeta-7v8vxsn5ss.vercel.app/",
+    "code": null
+  },
+  {
+    "id": "infosysclone",
+    "name": "infosysclone",
+    "date": "Mar–May 2026",
+    "category": "frontend",
+    "desc": "Front-end clone project recreating the Infosys website layout and interactions.",
+    "tags": ["HTML/CSS", "JavaScript"],
+    "live": "https://deft-manatee-93a516.netlify.app/",
+    "code": null
+  },
+  {
+    "id": "agency-ai-website",
+    "name": "Agency AI Website",
+    "date": "May 2026",
+    "category": "frontend",
+    "desc": "Modern, responsive AI-agency front end built with React and Tailwind CSS — smooth animations, dark mode, and contact form integration via Web3Forms & Framer Motion.",
+    "tags": ["React", "Tailwind", "Framer Motion"],
+    "live": "https://ecommerce-f-sable.vercel.app/",
+    "code": null
+  },
+  {
+    "id": "todo-list",
+    "name": "Todo-list",
+    "date": "Mar 2026",
+    "category": "cli",
+    "desc": "Task-management app with React & Redux for state handling.",
+    "tags": ["React", "Redux"],
+    "live": null,
+    "code": "https://github.com/Ronak-star/React-and-Redux-Projects"
+  },
+  {
+    "id": "library-seating",
+    "name": "Library Seating Booking System",
+    "date": "Mar 2026",
+    "category": "fullstack",
+    "desc": "Web app to browse and reserve library seats in real time.",
+    "tags": ["React", "Booking UI"],
+    "live": "https://stately-phoenix-009586.netlify.app/",
+    "code": null
+  },
+  {
+    "id": "currency-converter",
+    "name": "Currency-Converter",
+    "date": "Feb–Mar 2026",
+    "category": "cli",
+    "desc": "Real-time currency conversion tool with a clean, responsive UI.",
+    "tags": ["JavaScript", "API"],
+    "live": "https://stirring-kitten-fa14af.netlify.app/",
+    "code": null
+  },
+  {
+    "id": "spotify-clone",
+    "name": "Spotify-clone",
+    "date": "Jan–Mar 2026",
+    "category": "frontend",
+    "desc": "Front-end recreation of the Spotify web player interface.",
+    "tags": ["HTML/CSS", "JavaScript"],
+    "live": null,
+    "code": "https://github.com/Ronak-star/Spotify-Clone"
+  },
+  {
+    "id": "rock-paper-scissors",
+    "name": "Rock-Paper-Scissors-Game",
+    "date": "Feb 2026",
+    "category": "cli",
+    "desc": "Classic browser game with score tracking and simple animations.",
+    "tags": ["JavaScript"],
+    "live": "https://stalwart-kelpie-f1c4bc.netlify.app/",
+    "code": null
+  },
+  {
+    "id": "tic-tac-toe",
+    "name": "Tic-Tac-Toe-Game",
+    "date": "Feb 2026",
+    "category": "cli",
+    "desc": "Two-player Tic-Tac-Toe with win detection and reset logic.",
+    "tags": ["JavaScript"],
+    "live": "https://chipper-kataifi-d0c84d.netlify.app/",
+    "code": null
+  },
+  {
+    "id": "amazon-clone",
+    "name": "Amazon Clone",
+    "date": "Jan 2026",
+    "category": "frontend",
+    "desc": "Responsive Amazon-inspired e-commerce site with product listing, search, add-to-cart, and checkout UI.",
+    "tags": ["HTML/CSS", "JavaScript", "React"],
+    "live": "https://benevolent-beignet-5202bb.netlify.app/",
+    "code": null
+  },
+  {
+    "id": "tailor-shop",
+    "name": "Tailor-shop-",
+    "date": "Nov–Dec 2025",
+    "category": "fullstack",
+    "desc": "Web app for a tailoring business — services, orders, and customer-facing pages.",
+    "tags": ["Web App"],
+    "live": "https://shoptailor.netlify.app/",
+    "code": null
+  },
+  {
+    "id": "student-report-card",
+    "name": "Student-Report-Card-Project",
+    "date": "Sep–Oct 2025",
+    "category": "cli",
+    "desc": "Program to generate and manage student report cards — core logic and data handling practice.",
+    "tags": ["C++ / Java", "DSA"],
+    "live": null,
+    "code": "https://github.com/Ronak-star/Student-Report-Card-Project"
+  },
+  {
+    "id": "phone-book",
+    "name": "PHONE_BOOK_PROJECT",
+    "date": "Jun–Jul 2025",
+    "category": "cli",
+    "desc": "Contact management program covering add, search, update, and delete operations.",
+    "tags": ["C++", "DSA"],
+    "live": null,
+    "code": "https://github.com/Ronak-star/PHONE_BOOK_PROJECT"
+  }
+]

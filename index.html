@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ronak Tailor — Full-Stack & Agentic AI Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0f1320; --bg-alt:#141a2b; --panel:#171e33; --panel-2:#1c2440; --line:#2a3355;
+    --text:#dde3f5; --text-dim:#8b93b5; --amber:#e8a33d; --teal:#4fd1c5; --pink:#e8739d;
+    --mono:'JetBrains Mono',monospace; --sans:'Sora',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5;overflow-x:hidden;}
+  ::selection{background:var(--amber);color:#14182a;}
+  a{color:inherit;text-decoration:none;}
+
+  body::before{content:"";position:fixed;inset:0;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:48px 48px;opacity:.08;pointer-events:none;z-index:0;}
+
+  /* cursor glow */
+  #glow{position:fixed;width:420px;height:420px;border-radius:50%;
+    background:radial-gradient(circle,rgba(232,163,61,0.10),transparent 70%);
+    pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:opacity .3s;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;position:relative;z-index:1;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(15,19,32,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  .tabbar{display:flex;align-items:center;justify-content:space-between;padding:14px 28px;max-width:1120px;margin:0 auto;}
+  .logo{font-family:var(--mono);font-weight:700;font-size:15px;display:flex;align-items:center;gap:8px;}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+  nav{display:flex;gap:2px;font-family:var(--mono);font-size:13px;}
+  nav a{padding:8px 14px;border-radius:6px 6px 0 0;color:var(--text-dim);border:1px solid transparent;transition:.15s;white-space:nowrap;}
+  nav a:hover{color:var(--text);background:var(--panel);border-color:var(--line);}
+  @media (max-width:760px){nav{display:none;}}
+
+  .hero{padding:90px 0 60px;position:relative;z-index:1;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
+  @media (max-width:860px){.hero-grid{grid-template-columns:1fr;}}
+
+  .eyebrow{font-family:var(--mono);font-size:13px;color:var(--teal);letter-spacing:.06em;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--teal);}
+
+  h1{font-weight:800;font-size:clamp(34px,5vw,54px);line-height:1.08;letter-spacing:-.02em;margin-bottom:20px;
+     opacity:0;animation:fadeUp .8s ease .1s forwards;}
+  h1 span{color:var(--amber);}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+  .hero-desc{color:var(--text-dim);font-size:16.5px;max-width:480px;margin-bottom:30px;opacity:0;animation:fadeUp .8s ease .25s forwards;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:34px;opacity:0;animation:fadeUp .8s ease .4s forwards;}
+  .btn{font-family:var(--mono);font-size:13.5px;padding:12px 20px;border-radius:8px;border:1px solid var(--line);transition:.15s;display:inline-flex;align-items:center;gap:8px;cursor:pointer;background:transparent;color:inherit;}
+  .btn-primary{background:var(--amber);color:#14182a;font-weight:700;border-color:var(--amber);}
+  .btn-primary:hover{background:#f3b45a;transform:translateY(-2px);}
+  .btn-ghost:hover{border-color:var(--teal);color:var(--teal);transform:translateY(-2px);}
+
+  .social-row{display:flex;gap:16px;font-family:var(--mono);font-size:13px;color:var(--text-dim);flex-wrap:wrap;opacity:0;animation:fadeUp .8s ease .55s forwards;}
+  .social-row a:hover{color:var(--teal);}
+
+  /* animated wireframe polyhedron */
+  .orb-wrap{display:flex;align-items:center;justify-content:center;perspective:800px;height:320px;position:relative;}
+  .orb{width:220px;height:220px;position:relative;transform-style:preserve-3d;animation:spin 14s linear infinite;}
+  @keyframes spin{from{transform:rotateX(0deg) rotateY(0deg);}to{transform:rotateX(360deg) rotateY(360deg);}}
+  .ring{position:absolute;inset:0;border:1px solid var(--teal);border-radius:50%;opacity:.35;}
+  .ring:nth-child(1){transform:rotateY(0deg);}
+  .ring:nth-child(2){transform:rotateY(60deg);}
+  .ring:nth-child(3){transform:rotateY(120deg);}
+  .ring:nth-child(4){transform:rotateX(60deg);}
+  .ring:nth-child(5){transform:rotateX(120deg);}
+  .core{position:absolute;top:50%;left:50%;width:22px;height:22px;margin:-11px;border-radius:6px;background:var(--amber);box-shadow:0 0 30px var(--amber);animation:corepulse 2.4s ease-in-out infinite;}
+  @keyframes corepulse{0%,100%{transform:scale(1);}50%{transform:scale(1.25);}}
+  .blob{position:absolute;width:340px;height:340px;border-radius:50%;filter:blur(60px);opacity:.18;z-index:-1;}
+  .blob.b1{background:var(--teal);top:-40px;left:-40px;animation:float 8s ease-in-out infinite;}
+  .blob.b2{background:var(--pink);bottom:-60px;right:-20px;animation:float 10s ease-in-out infinite reverse;}
+  @keyframes float{0%,100%{transform:translate(0,0);}50%{transform:translate(20px,-20px);}}
+
+  /* terminal */
+  .terminal{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);opacity:0;animation:fadeUp .9s ease .3s forwards;}
+  .term-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--panel-2);border-bottom:1px solid var(--line);}
+  .term-dot{width:11px;height:11px;border-radius:50%;}
+  .term-bar span:nth-child(1){background:#ff5f56;} .term-bar span:nth-child(2){background:#ffbd2e;} .term-bar span:nth-child(3){background:#27c93f;}
+  .term-title{margin-left:10px;font-family:var(--mono);font-size:12px;color:var(--text-dim);}
+  .term-body{padding:20px 22px;font-family:var(--mono);font-size:13.5px;min-height:180px;}
+  .term-line{margin-bottom:10px;}
+  .prompt{color:var(--teal);}
+  .term-out{color:var(--text-dim);padding-left:18px;}
+  .term-key{color:var(--pink);}
+  .cursor{display:inline-block;width:8px;height:15px;background:var(--amber);vertical-align:middle;animation:blink 1s step-end infinite;}
+  @keyframes blink{50%{opacity:0;}}
+
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px;}
+  @media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr);}}
+  .stat{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;text-align:center;}
+  .stat .num{font-family:var(--mono);font-weight:700;font-size:26px;color:var(--amber);}
+  .stat .lbl{font-family:var(--mono);font-size:11px;color:var(--text-dim);margin-top:4px;}
+
+  section{padding:70px 0;position:relative;z-index:1;border-top:1px solid var(--line);}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.show{opacity:1;transform:translateY(0);}
+
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:40px;}
+  .sec-num{font-family:var(--mono);color:var(--amber);font-size:14px;}
+  .sec-title{font-weight:700;font-size:28px;letter-spacing:-.01em;}
+
+  .about-grid{display:grid;grid-template-columns:2fr 1fr;gap:40px;}
+  @media (max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .about-text{color:var(--text-dim);font-size:15.5px;}
+  .about-text p{margin-bottom:16px;}
+  .about-text strong{color:var(--text);font-weight:600;}
+  .info-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px;font-family:var(--mono);font-size:13px;}
+  .info-card .row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);}
+  .info-card .row:last-child{border-bottom:none;}
+  .info-card .k{color:var(--text-dim);} .info-card .v{color:var(--teal);}
+
+  .tl{position:relative;padding-left:28px;}
+  .tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:1px;background:var(--line);}
+  .tl-item{position:relative;margin-bottom:30px;}
+  .tl-item::before{content:"";position:absolute;left:-28px;top:5px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--amber);}
+  .tl-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:6px;}
+  .tl-role{font-weight:700;font-size:16.5px;}
+  .tl-date{font-family:var(--mono);font-size:12.5px;color:var(--teal);background:var(--panel);border:1px solid var(--line);padding:3px 10px;border-radius:20px;}
+  .tl-org{color:var(--text-dim);font-size:13.5px;margin-bottom:10px;font-family:var(--mono);}
+  .tl-list{list-style:none;color:var(--text-dim);font-size:14px;}
+  .tl-list li{position:relative;padding-left:18px;margin-bottom:6px;}
+  .tl-list li::before{content:"›";position:absolute;left:0;color:var(--amber);}
+
+  .edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;}
+  @media (max-width:760px){.edu-grid{grid-template-columns:1fr;}}
+  .edu-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;transition:.2s;}
+  .edu-card:hover{border-color:var(--teal);transform:translateY(-3px);}
+  .edu-card .deg{font-weight:700;font-size:14.5px;margin-bottom:4px;}
+  .edu-card .sch{color:var(--text-dim);font-size:13px;margin-bottom:10px;}
+  .edu-card .meta{display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--teal);}
+
+  .skill-groups{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  @media (max-width:860px){.skill-groups{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:480px){.skill-groups{grid-template-columns:1fr;}}
+  .skill-group-title{font-family:var(--mono);font-size:12px;color:var(--amber);letter-spacing:.05em;margin-bottom:14px;}
+  .chip-col{display:flex;flex-direction:column;gap:8px;}
+  .chip{font-family:var(--mono);font-size:13px;color:var(--text-dim);padding:7px 12px;background:var(--panel);border:1px solid var(--line);border-radius:6px;transition:.15s;}
+  .chip:hover{border-color:var(--teal);color:var(--text);transform:translateX(3px);}
+
+  .coding-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media (max-width:860px){.coding-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.coding-grid{grid-template-columns:1fr;}}
+  .code-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;gap:14px;align-items:flex-start;transition:.2s;}
+  .code-card:hover{border-color:var(--amber);transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.3);}
+  .code-card .cic{font-size:22px;color:var(--amber);line-height:1;}
+  .code-card .cname{font-weight:700;font-size:15.5px;margin-bottom:2px;}
+  .code-card .chandle{font-family:var(--mono);font-size:12px;color:var(--teal);margin-bottom:6px;}
+  .code-card .cdesc{color:var(--text-dim);font-size:12.8px;}
+  .code-card .carrow{margin-left:auto;color:var(--text-dim);font-family:var(--mono);align-self:center;transition:.15s;}
+  .code-card:hover .carrow{color:var(--amber);transform:translateX(3px);}
+
+  .filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;font-family:var(--mono);font-size:12.5px;}
+  .filter-btn{padding:7px 14px;border-radius:20px;border:1px solid var(--line);color:var(--text-dim);cursor:pointer;background:transparent;transition:.15s;}
+  .filter-btn.active,.filter-btn:hover{border-color:var(--amber);color:var(--amber);}
+
+  .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  @media (max-width:760px){.proj-grid{grid-template-columns:1fr;}}
+  .proj-card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px;display:flex;flex-direction:column;transition:.25s;opacity:0;transform:translateY(16px);}
+  .proj-card.in{opacity:1;transform:translateY(0);}
+  .proj-card:hover{border-color:var(--teal);transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.3);}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:10px;}
+  .proj-name{font-weight:700;font-size:16.5px;}
+  .proj-date{font-family:var(--mono);font-size:11.5px;color:var(--text-dim);white-space:nowrap;}
+  .proj-desc{color:var(--text-dim);font-size:13.8px;margin-bottom:16px;flex-grow:1;}
+  .proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
+  .tag{font-family:var(--mono);font-size:11px;color:var(--teal);background:rgba(79,209,197,.08);border:1px solid rgba(79,209,197,.3);padding:3px 9px;border-radius:20px;}
+  .proj-links{display:flex;gap:10px;}
+  .proj-links a{font-family:var(--mono);font-size:12.5px;padding:8px 14px;border-radius:7px;border:1px solid var(--line);flex:1;text-align:center;transition:.15s;}
+  .proj-links a.live{background:var(--amber);color:#14182a;font-weight:700;border-color:var(--amber);}
+  .proj-links a.live:hover{background:#f3b45a;}
+  .proj-links a.code:hover{border-color:var(--teal);color:var(--teal);}
+  .proj-card.hidden{display:none;}
+  .loading-row{font-family:var(--mono);color:var(--text-dim);font-size:13px;}
+
+  .cert-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px 24px;display:flex;gap:18px;align-items:flex-start;}
+  .cert-icon{font-family:var(--mono);font-size:20px;color:var(--amber);}
+  .cert-name{font-weight:700;font-size:16px;margin-bottom:4px;}
+  .cert-org{font-family:var(--mono);font-size:12.5px;color:var(--teal);margin-bottom:8px;}
+  .cert-desc{color:var(--text-dim);font-size:13.8px;}
+
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;}
+  @media (max-width:760px){.contact-grid{grid-template-columns:1fr;}}
+  .contact h2{font-weight:800;font-size:clamp(26px,4vw,36px);margin-bottom:14px;}
+  .contact p{color:var(--text-dim);margin-bottom:26px;max-width:420px;}
+  .form-group{margin-bottom:16px;}
+  .form-group label{display:block;font-family:var(--mono);font-size:12px;color:var(--text-dim);margin-bottom:6px;}
+  .form-group input,.form-group textarea{width:100%;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--text);font-family:var(--sans);font-size:14px;outline:none;transition:.15s;}
+  .form-group input:focus,.form-group textarea:focus{border-color:var(--teal);}
+  .form-group textarea{resize:vertical;min-height:110px;}
+  #formStatus{font-family:var(--mono);font-size:13px;margin-top:12px;min-height:18px;}
+  #formStatus.ok{color:var(--teal);}
+  #formStatus.err{color:var(--pink);}
+  .contact-links{display:flex;flex-direction:column;gap:14px;}
+  .clink{display:flex;align-items:center;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;transition:.15s;}
+  .clink:hover{border-color:var(--amber);transform:translateX(4px);}
+  .clink .ic{font-size:18px;color:var(--amber);}
+  .clink .lbl{font-family:var(--mono);font-size:12px;color:var(--text-dim);}
+  .clink .val{font-weight:600;font-size:14.5px;}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;font-family:var(--mono);font-size:12.5px;color:var(--text-dim);}
+  footer a:hover{color:var(--teal);}
+
+  ::-webkit-scrollbar{width:10px;}
+  ::-webkit-scrollbar-track{background:var(--bg);}
+  ::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px;}
+</style>
+</head>
+<body>
+<div id="glow"></div>
+
+<header>
+  <div class="tabbar">
+    <div class="logo"><span class="dot"></span> ronak.tailor()</div>
+    <nav>
+      <a href="#about">about.md</a>
+      <a href="#experience">experience.log</a>
+      <a href="#skills">skills.json</a>
+      <a href="#coding">coding.profiles</a>
+      <a href="#projects">projects/</a>
+      <a href="#certs">certs.yml</a>
+      <a href="#contact">contact.sh</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-top:none;">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">SECOND-YEAR B.TECH · INFORMATION TECHNOLOGY</div>
+        <h1>Building <span>agentic AI</span> systems and full-stack products that ship.</h1>
+        <p class="hero-desc">I'm Ronak Tailor — a developer from Jaipur who builds LLM-powered agents, RAG pipelines, and MERN-stack applications, and ships them to real URLs instead of leaving them in a repo.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#projects">View Projects →</a>
+          <a class="btn btn-ghost" href="#contact">Get in touch</a>
+        </div>
+        <div class="social-row" id="socialRow"></div>
+        <div class="stats" id="statsRow"></div>
+      </div>
+
+      <div>
+        <div class="orb-wrap">
+          <div class="blob b1"></div><div class="blob b2"></div>
+          <div class="orb">
+            <div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div><div class="ring"></div>
+            <div class="core"></div>
+          </div>
+        </div>
+        <div class="terminal">
+          <div class="term-bar"><span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span><span class="term-title">ronak@devbox — zsh</span></div>
+          <div class="term-body" id="termBody"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="sec-head reveal"><span class="sec-num">01</span><span class="sec-title">About</span></div>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>I'm currently a <strong>second-year B.Tech student in Information Technology</strong> at Arya College of Engineering & IT, Jaipur, building a foundation in programming, algorithms, and data structures while applying it to real, deployed products.</p>
+        <p>My recent focus has been <strong>agentic AI</strong> — building tool-using LLM agents with persistent memory, RAG-based question answering, and multi-LLM routing — on top of a solid full-stack base in the <strong>MERN stack</strong> and <strong>FastAPI</strong>. I completed a front-end development internship at <strong>IBM</strong>, and I'm currently training in Agentic AI with GRRAS Solutions.</p>
+        <p>I like taking projects all the way to a live URL — most of the work below is deployed on Vercel or Netlify, not just sitting in a repo.</p>
+      </div>
+      <div class="info-card" id="infoCard"></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head reveal"><span class="sec-num">02</span><span class="sec-title">Experience &amp; Education</span></div>
+    <div class="tl" id="expTL"></div>
+    <div class="edu-grid" id="eduGrid"></div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head reveal"><span class="sec-num">03</span><span class="sec-title">Skills</span></div>
+    <div class="skill-groups" id="skillGroups"></div>
+  </section>
+
+  <section id="coding">
+    <div class="sec-head reveal"><span class="sec-num">04</span><span class="sec-title">Coding Profiles</span></div>
+    <div class="coding-grid" id="codingGrid"></div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head reveal"><span class="sec-num">05</span><span class="sec-title">Projects</span></div>
+    <div class="filter-row reveal" id="filterRow"></div>
+    <div class="proj-grid" id="projGrid"><div class="loading-row">Loading projects from API…</div></div>
+  </section>
+
+  <section id="certs">
+    <div class="sec-head reveal"><span class="sec-num">06</span><span class="sec-title">Trainings &amp; Certifications</span></div>
+    <div id="certList"></div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head reveal"><span class="sec-num">07</span><span class="sec-title">Get in Touch</span></div>
+    <div class="contact-grid reveal">
+      <div class="contact">
+        <h2>Let's build something.</h2>
+        <p>Open to internships and collaborations in full-stack development and agentic AI. This form posts to a live Express API — your message is saved server-side.</p>
+        <form id="contactForm">
+          <div class="form-group"><label for="name">Name</label><input id="name" name="name" type="text" required placeholder="Your name"></div>
+          <div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@example.com"></div>
+          <div class="form-group"><label for="message">Message</label><textarea id="message" name="message" required placeholder="Tell me about the opportunity or project…"></textarea></div>
+          <button class="btn btn-primary" type="submit">Send Message →</button>
+          <div id="formStatus"></div>
+        </form>
+      </div>
+      <div class="contact-links" id="contactLinks"></div>
+    </div>
+  </section>
+
+</div>
+
+<footer><div class="wrap">designed &amp; built for Ronak Tailor · Jaipur, India · © 2026 · <a href="/api/projects" target="_blank">/api/projects</a> · <a href="/api/profile" target="_blank">/api/profile</a></div></footer>
+
+<script>
+const API = ''; // same-origin; backend serves this file too
+
+// cursor glow
+document.addEventListener('mousemove', e=>{
+  const g = document.getElementById('glow');
+  g.style.left = e.clientX+'px'; g.style.top = e.clientY+'px';
+});
+
+// scroll reveal (reusable — works for elements added after fetch too)
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      en.target.classList.add('show');
+      const delay = parseInt(en.target.style.transitionDelay)||0;
+      setTimeout(()=>{ en.target.style.transitionDelay=''; }, delay+750);
+      io.unobserve(en.target);
+    }
+  });
+},{threshold:.15, rootMargin:'0px 0px -40px 0px'});
+
+function observeReveal(container){
+  container.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+}
+function staggerReveal(container, selector, baseDelay=60){
+  const items = container.querySelectorAll(selector);
+  items.forEach((el,i)=>{
+    el.classList.add('reveal');
+    el.style.transitionDelay = (i*baseDelay)+'ms';
+    io.observe(el);
+  });
+}
+
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+function animateCount(el, target){
+  let cur = 0; const step = Math.max(1, Math.round(target/30));
+  const t = setInterval(()=>{ cur += step; if(cur>=target){cur=target; clearInterval(t);} el.textContent = cur; },30);
+}
+
+let ALL_PROJECTS = [];
+
+async function loadProfile(){
+  const res = await fetch(API + '/api/profile');
+  const p = await res.json();
+
+  document.getElementById('socialRow').innerHTML = `
+    <a href="${p.social.github}" target="_blank" rel="noopener">GitHub</a>
+    <a href="${p.social.leetcode}" target="_blank" rel="noopener">LeetCode</a>
+    <a href="${p.social.codechef}" target="_blank" rel="noopener">CodeChef</a>
+    <a href="${p.social.hackerrank}" target="_blank" rel="noopener">HackerRank</a>
+    <a href="${p.social.portfolioGamma}" target="_blank" rel="noopener">Portfolio (Gamma)</a>`;
+
+  document.getElementById('termBody').innerHTML = `
+    <div class="term-line"><span class="prompt">$</span> whoami</div>
+    <div class="term-out">${p.name} — ${p.title}</div>
+    <div class="term-line"><span class="prompt">$</span> curl /api/profile | jq .status</div>
+    <div class="term-out">"Open to internships"</div>
+    <div class="term-line"><span class="prompt">$</span> ls internships/</div>
+    <div class="term-out">ibm-frontend-development/ <span class="term-key">(Jul–Aug 2025)</span></div>
+    <div class="term-line"><span class="prompt">$</span> <span class="cursor"></span></div>`;
+
+  document.getElementById('infoCard').innerHTML = `
+    <div class="row"><span class="k">location</span><span class="v">${p.location}</span></div>
+    <div class="row"><span class="k">email</span><span class="v">${p.email}</span></div>
+    <div class="row"><span class="k">phone</span><span class="v">${p.phone}</span></div>
+    <div class="row"><span class="k">degree</span><span class="v">${p.degree}</span></div>
+    <div class="row"><span class="k">cgpa</span><span class="v">${p.cgpa}</span></div>
+    <div class="row"><span class="k">status</span><span class="v">Open to internships</span></div>`;
+
+  document.getElementById('expTL').innerHTML = p.experience.map(e => `
+    <div class="tl-item">
+      <div class="tl-top"><div class="tl-role">${e.role}</div><div class="tl-date">${e.date}</div></div>
+      <div class="tl-org">${e.org}</div>
+      <ul class="tl-list">${e.points.map(pt=>`<li>${pt}</li>`).join('')}</ul>
+    </div>`).join('');
+  staggerReveal(document.getElementById('expTL'), '.tl-item', 100);
+
+  document.getElementById('eduGrid').innerHTML = p.education.map(ed => `
+    <div class="edu-card"><div class="deg">${ed.deg}</div><div class="sch">${ed.school}</div>
+      <div class="meta"><span>${ed.date}</span><span>${ed.score}</span></div></div>`).join('');
+  staggerReveal(document.getElementById('eduGrid'), '.edu-card', 90);
+
+  const groupLabels = { languages:'// languages', frontend:'// frontend', backend:'// backend & data', ai_tools:'// AI & tools' };
+  document.getElementById('skillGroups').innerHTML = Object.entries(p.skills).map(([k,arr])=>`
+    <div><div class="skill-group-title">${groupLabels[k]||k}</div>
+      <div class="chip-col">${arr.map(s=>`<span class="chip">${s}</span>`).join('')}</div></div>`).join('');
+  staggerReveal(document.getElementById('skillGroups'), '.skill-groups > div', 80);
+
+  document.getElementById('certList').innerHTML = p.certifications.map(c=>`
+    <div class="cert-card"><div class="cert-icon">◆</div>
+      <div><div class="cert-name">${c.name}</div><div class="cert-org">${c.org} · ${c.date}</div>
+      <div class="cert-desc">${c.desc}</div></div></div>`).join('');
+  staggerReveal(document.getElementById('certList'), '.cert-card', 90);
+
+  document.getElementById('codingGrid').innerHTML = p.codingProfiles.map(c => `
+    <a class="code-card" href="${c.url}" target="_blank" rel="noopener">
+      <span class="cic">${c.icon}</span>
+      <div><div class="cname">${c.name}</div><div class="chandle">@${c.handle}</div><div class="cdesc">${c.desc}</div></div>
+      <span class="carrow">→</span>
+    </a>`).join('');
+  staggerReveal(document.getElementById('codingGrid'), '.code-card', 90);
+
+  document.getElementById('contactLinks').innerHTML = `
+    <a class="clink" href="mailto:${p.email}"><span class="ic">✉</span><div><div class="lbl">Email</div><div class="val">${p.email}</div></div></a>
+    <a class="clink" href="tel:${p.phone.replace(/\\s/g,'')}"><span class="ic">☎</span><div><div class="lbl">Phone</div><div class="val">${p.phone}</div></div></a>
+    <a class="clink" href="${p.social.github}" target="_blank" rel="noopener"><span class="ic">⌥</span><div><div class="lbl">Code</div><div class="val">github.com/Ronak-star</div></div></a>`;
+
+  // stats
+  const statsData = [
+    { num: 18, lbl: 'Projects shipped' },
+    { num: 1, lbl: 'Internship (IBM)' },
+    { num: 6, lbl: 'Live deployments' },
+    { num: 2028, lbl: 'Graduation year' }
+  ];
+  document.getElementById('statsRow').innerHTML = statsData.map(s=>`<div class="stat"><div class="num" data-target="${s.num}">0</div><div class="lbl">${s.lbl}</div></div>`).join('');
+  document.querySelectorAll('.stat .num').forEach(el=>animateCount(el, parseInt(el.dataset.target)));
+}
+
+async function loadProjects(){
+  const res = await fetch(API + '/api/projects');
+  ALL_PROJECTS = await res.json();
+  renderProjects('all');
+  renderFilters();
+}
+
+function renderFilters(){
+  const cats = [
+    {k:'all', l:`all (${ALL_PROJECTS.length})`},
+    {k:'ai', l:'agentic ai'},
+    {k:'fullstack', l:'full-stack'},
+    {k:'frontend', l:'frontend / clones'},
+    {k:'cli', l:'mini / DSA'}
+  ];
+  const row = document.getElementById('filterRow');
+  row.innerHTML = cats.map((c,i)=>`<button class="filter-btn ${i===0?'active':''}" data-filter="${c.k}">${c.l}</button>`).join('');
+  row.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      row.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      renderProjects(btn.dataset.filter);
+    });
+  });
+}
+
+let projectsRevealedOnce = false;
+
+function renderProjects(filter){
+  const grid = document.getElementById('projGrid');
+  const list = filter==='all' ? ALL_PROJECTS : ALL_PROJECTS.filter(p=>p.category===filter);
+  grid.innerHTML = list.map(p => `
+    <div class="proj-card">
+      <div class="proj-top"><span class="proj-name">${p.name}</span><span class="proj-date">${p.date}</span></div>
+      <p class="proj-desc">${p.desc}</p>
+      <div class="proj-tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+      <div class="proj-links">
+        ${p.live ? `<a class="live" href="${p.live}" target="_blank" rel="noopener">Live Demo →</a>` : ''}
+        ${p.code ? `<a class="code" href="${p.code}" target="_blank" rel="noopener">GitHub →</a>` : ''}
+      </div>
+    </div>`).join('');
+
+  const cards = grid.querySelectorAll('.proj-card');
+  if(!projectsRevealedOnce){
+    // first paint: below the fold, so wait for scroll into view, staggered
+    cards.forEach((c,i)=>{
+      const cardObserver = new IntersectionObserver((entries)=>{
+        entries.forEach(en=>{
+          if(en.isIntersecting){
+            setTimeout(()=> en.target.classList.add('in'), i*70);
+            cardObserver.unobserve(en.target);
+          }
+        });
+      },{threshold:.12, rootMargin:'0px 0px -30px 0px'});
+      cardObserver.observe(c);
+    });
+    projectsRevealedOnce = true;
+  } else {
+    // filter click: section already in view, so just restagger immediately
+    requestAnimationFrame(()=>{
+      cards.forEach((c,i)=> setTimeout(()=>c.classList.add('in'), i*40) );
+    });
+  }
+}
+
+document.getElementById('contactForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const status = document.getElementById('formStatus');
+  status.className=''; status.textContent = 'Sending…';
+  const body = {
+    name: document.getElementById('name').value,
+    email: document.getElementById('email').value,
+    message: document.getElementById('message').value
+  };
+  try{
+    const res = await fetch(API + '/api/contact', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body)
+    });
+    const data = await res.json();
+    if(res.ok){
+      status.className='ok'; status.textContent = '✔ ' + data.message;
+      e.target.reset();
+    } else {
+      status.className='err'; status.textContent = '✕ ' + (data.error || 'Something went wrong.');
+    }
+  }catch(err){
+    status.className='err'; status.textContent = '✕ Could not reach the server. Is the backend running?';
+  }
+});
+
+loadProfile();
+loadProjects();
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{
+  "name": "Ronak Tailor",
+  "title": "Full-Stack & Agentic AI Developer",
+  "tagline": "Building agentic AI systems and full-stack products that ship.",
+  "location": "Jaipur, India",
+  "email": "tailorronak6@gmail.com",
+  "phone": "+91 6350681370",
+  "degree": "B.Tech, Information Technology",
+  "college": "Arya College of Engineering & IT",
+  "years": "2024 – 2028",
+  "cgpa": "7.57 / 8",
+  "social": {
+    "github": "https://github.com/Ronak-star",
+    "leetcode": "https://leetcode.com/u/Ronak_Tailor/",
+    "codechef": "https://www.codechef.com/users/nice_glee_94",
+    "hackerrank": "https://www.hackerrank.com/profile/tailorronak6",
+    "portfolioGamma": "https://ronak-tailor-violqwb.gamma.site/"
+  },
+  "codingProfiles": [
+    { "name": "GitHub", "handle": "Ronak-star", "url": "https://github.com/Ronak-star", "icon": "⌥", "desc": "All source code & repos" },
+    { "name": "LeetCode", "handle": "Ronak_Tailor", "url": "https://leetcode.com/u/Ronak_Tailor/", "icon": "◆", "desc": "DSA problem solving" },
+    { "name": "CodeChef", "handle": "nice_glee_94", "url": "https://www.codechef.com/users/nice_glee_94", "icon": "▲", "desc": "Competitive programming" },
+    { "name": "HackerRank", "handle": "tailorronak6", "url": "https://www.hackerrank.com/profile/tailorronak6", "icon": "★", "desc": "Skill certifications & practice" },
+    { "name": "Portfolio (Gamma)", "handle": "ronak-tailor", "url": "https://ronak-tailor-violqwb.gamma.site/", "icon": "◈", "desc": "One-page resume site" },
+    { "name": "Canva", "handle": "design work", "url": "https://www.canva.com/settings/your-account", "icon": "✦", "desc": "Design & presentation work" }
+  ],
+  "experience": [
+    {
+      "role": "Front End Development — Internship",
+      "org": "IBM · Virtual",
+      "date": "Jul 2025 – Aug 2025",
+      "points": [
+        "Built responsive, user-friendly web interfaces using HTML, CSS, JavaScript, and React",
+        "Developed reusable UI components and optimized performance for better UX",
+        "Implemented API integration and handled dynamic data rendering on the front end",
+        "Collaborated with cross-functional teams to debug issues and improve UI consistency"
+      ]
+    }
+  ],
+  "education": [
+    { "deg": "B.Tech, Information Technology", "school": "Arya College of Engineering & IT", "date": "2024 – 2028", "score": "CGPA 7.57/8" },
+    { "deg": "Senior Secondary (XII) · RBSE", "school": "A P S · Science", "date": "2024", "score": "CGPA 8.00/10" },
+    { "deg": "Secondary (X) · RBSE", "school": "M N Academy", "date": "2022", "score": "CGPA 7.00/7" }
+  ],
+  "skills": {
+    "languages": ["C++", "Java", "Python", "C", "JavaScript"],
+    "frontend": ["React", "AngularJS", "HTML / CSS", "Tailwind CSS", "Bootstrap"],
+    "backend": ["Node.js", "Express.js", "FastAPI", "MongoDB", "MS SQL Server"],
+    "ai_tools": ["OpenAI API", "Gemini", "Git / GitHub", "Cloudinary", "DSA / OOP"]
+  },
+  "certifications": [
+    {
+      "name": "Agentic AI",
+      "org": "GRRAS Solutions Pvt. Ltd. · Virtual",
+      "date": "May 2026 – Present",
+      "desc": "Hands-on workshop on Agentic AI — fundamentals of autonomous AI agents, their architecture, and real-world applications, with practical exposure to building and deploying agent-based systems."
+    }
+  ]
+}
