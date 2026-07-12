@@ -206,7 +206,7 @@ I enjoy building modern web applications, solving Data Structures & Algorithms p
 * GitHub: https://github.com/Ronak-star
 * LinkedIn: https://www.linkedin.com/in/ronak-tailor-10037235a/
 * Email: [tailorronak6@gmail.com](mailto:tailorronak6@gmail.com)
-* Portfolio: https://your-portfolio.vercel.app
+* Portfolio: https://ronak-portfolio-omega.vercel.app/
 
 ---
 
